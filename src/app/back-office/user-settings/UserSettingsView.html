@@ -1,0 +1,238 @@
+<md-content style="background-color: #e6e6e6;" flex layout="column">
+  <md-card class="md-primary" flex="10" layout="column">
+    <md-progress-linear ng-show="isLoading == true" md-mode="indeterminate" class="md-accent"></md-progress-linear>
+    <md-card-title flex>
+      <md-card-title-text flex>
+        <md-headline layout="row" layout-align="center center">
+          <span class="md-headline">{{ userSettings.pageTitle }}</span>
+        </md-headline>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
+  <md-card ng-show="userSettings.visibleForm == false" flex layout="column">
+    <md-card-content  layout="column" layout-align="space-around none" flex>
+      <div layout="row" layout-align="start center"  flex="10">
+        <md-button class="md-fab md-mini md-primary" ng-click="userSettings.addUser()">
+          <md-icon ><i class="material-icons">add</i></md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-primary" ng-click="userSettings.stateSearchUser()">
+          <md-icon ><i class="material-icons">search</i></md-icon>
+        </md-button>
+        <md-input-container ng-hide="userSettings.userSearch == true">
+          <label>procura</label>
+          <input ng-model="userSettings.userFilter">
+        </md-input-container>
+      </div>
+
+      <!-- Tabela inicio -->
+      <md-content ng-show="userSettings.visibleForm === false" layout="column" flex>
+
+        <md-table-container  flex>
+          <table md-table>
+            <thead md-head md-order="userOrderCriter">
+              <tr md-row>
+                <th md-column md-order-by="$key">ID</th>
+                <th md-column md-order-by="name">NOME</th>
+                <th md-column md-order-by="email">EMAIL</th>
+                <th md-column>AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="user in userSettings.users | toArray | filter : userSettings.userFilter | orderBy : userOrderCriter | limitTo: userSettings.paginationParams.rowsLim : (userSettings.paginationParams.currentPage - 1) * userSettings.paginationParams.rowsLim">
+                <td md-cell>{{user.$key}}</td>
+                <td md-cell>{{user.name}}</td>
+                <td md-cell>{{user.email}}</td>
+                <td md-cell>
+                  <md-button ng-click="userSettings.editUser(user)" class="md-icon-button">
+                    <i class="material-icons">mode_edit</i>
+                  </md-button>
+                  <md-button class="md-icon-button">
+                    <i class="material-icons">delete</i>
+                  </md-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+        <!-- tabela fim -->
+        <md-table-pagination
+        ng-hide=" userSettings.userHide == false"
+        md-limit="userSettings.paginationParams.rowsLim"
+        md-limit-options="userSettings.paginationParams.limitOptions"
+        md-total="{{userSettings.usersArray.length}}"
+        md-page="userSettings.paginationParams.currentPage"
+        md-label="{{userSettings.paginationParams.labelOptions}}"
+        md-page-select="true"></md-table-pagination>
+
+      </md-content>
+    </md-card-content>
+  </md-card>
+  <!-- Formualrio inicio -->
+  <div ng-show="userSettings.visibleForm == true" flex>
+    <form name="usersForm" layout="column">
+      <md-card flex layout="column">
+        <md-card-title flex>
+          <md-card-title-text flex>
+            <md-headline layout="row" layout-align="left">
+              <span class="md-subhead">Dados usuário</span>
+            </md-headline>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content flex>
+          <div layout-gt-sm="row" layout-xs="column" flex>
+            <md-input-container flex>
+              <label>Nome</label>
+              <md-icon ><i class="material-icons">person</i></md-icon>
+              <input type="text" name="nome" ng-model="userSettings.user.name" ng-required="true" >
+              <div class="formValidationError" ng-show="usersForm.nome.$error.required && usersForm.nome.$dirty" >
+                Preencha o campo nome
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" layout-xs="column" flex>
+            <md-input-container flex>
+              <label>Telefone</label>
+              <md-icon ><i class="material-icons">phone</i></md-icon>
+              <input type="tel" name="telefone" ng-model="userSettings.user.contacts.tel" ng-required="true" ng-pattern="/^\(\d{2}\) \d{4}-\d{4}$/">
+              <div class="formValidationError" ng-show="usersForm.telefone.$error.required && usersForm.telefone.$dirty" >
+                Preencha o campo elefone
+              </div>
+              <div class="formValidationError" ng-show="usersForm.telefone.$error.pattern && usersForm.telefone.$dirty" >
+                Formato invalido, insira : (xx) xxxx-xxxx
+              </div>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Celular</label>
+              <md-icon ><i class="material-icons">phone_iphone</i></md-icon>
+              <input type="tel" name="celular" ng-model="userSettings.user.contacts.cel" ng-required="true" ng-pattern="/^\(\d{2}\) \d{4,5}-\d{4}$/">
+              <div class="formValidationError" ng-show="usersForm.celular.$error.required && usersForm.celular.$dirty" >
+                Preencha o campo celular
+              </div>
+              <div class="formValidationError" ng-show="usersForm.celular.$error.pattern && usersForm.celular.$dirty" >
+                Formato invalido, insira : (xx) (x)xxxx-xxxx
+              </div>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Email</label>
+              <md-icon ><i class="material-icons">mail_outline</i></md-icon>
+              <input type="email" name="email" ng-model="userSettings.user.email" ng-required="true">
+              <div class="formValidationError" ng-show="usersForm.email.$error.required && usersForm.email.$dirty" >
+                Preencha o campo email
+              </div>
+              <div class="formValidationError" ng-show="usersForm.email.$error.email && usersForm.email.$dirty" >
+                Formato errado
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row"  layout-xs="column" flex>
+            <md-input-container flex>
+              <label>Endereco</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="text" name="endereco" ng-model="userSettings.user.address.street" >
+            </md-input-container>
+            <md-input-container flex>
+              <label>Bairro</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="text" name="bairro" ng-model="userSettings.user.address.district">
+            </md-input-container>
+            <md-input-container flex="15">
+              <label>CEP</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="number" name="CEP" ng-model="userSettings.user.address.zipCode" ng-required="true">
+              <div class="formValidationError" ng-show="usersForm.CEP.$error.required && usersForm.CEP.$dirty" >
+                Preencha o campo CEP
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" layout-xs="column" flex>
+            <md-input-container flex>
+              <label>Municipio</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="text" name="municipio" ng-model="userSettings.user.address.city" >
+            </md-input-container>
+            <md-input-container flex>
+              <label>Estado</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="text" name="estado" ng-model="userSettings.user.address.state" >
+            </md-input-container>
+            <md-input-container flex>
+              <label>Pais</label>
+              <md-icon ><i class="material-icons">pin_drop</i></md-icon>
+              <input type="text" name="pais" ng-model="userSettings.user.address.country" >
+            </md-input-container>
+          </div>
+        </md-card-content>
+      </md-card>
+      <md-card flex layout="column">
+        <md-card-title flex>
+          <md-card-title-text flex>
+            <md-headline layout="row" layout-align="left">
+              <span class="md-subhead">Configuração</span>
+            </md-headline>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content flex>
+          <div layout-gt-sm="row" layout-xs="column" flex>
+            <md-input-container flex>
+              <label>Tipo</label>
+              <md-icon ><i class="material-icons">edit</i></md-icon>
+              <md-select ng-model="userSettings.user.type">
+                <md-option value="admin">Admin</md-option>
+                <md-option value="interno">Interno</md-option>
+                <md-option value="usuario">Usuario</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Empresa</label>
+              <md-icon ><i class="material-icons">business</i></md-icon>
+              <md-select ng-model="userSettings.user.company">
+                <md-option value="1">Empresa1</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row" layout-xs="column" layout-align="start center"  flex>
+            <md-input-container  flex>
+              <label>Data adesao</label>
+              <md-datepicker ng-model="userSettings.user.dtAdesao" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container >
+            <md-input-container  flex>
+              <label>Data Vencimento</label>
+              <md-datepicker ng-model="userSettings.user.dtVencimento" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container>
+            <md-input-container  flex="50">
+              <label>Status</label><br>
+              <md-switch ng-model="userSettings.user.status">
+              </md-switch>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row" layout-xs="column" layout-align="start center"  flex>
+            <md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+              <md-icon ng-click="userSettings.tooglePassword()">
+                <i ng-show="userSettings.visiblePass=='text'" class="material-icons">lock_open</i>
+                <i ng-show="userSettings.visiblePass=='password'" class="material-icons">lock_outline</i>
+              </md-icon>
+            </md-button>
+            <md-input-container flex="50">
+              <label>Password</label>
+              <input type="{{ userSettings.visiblePass }}" ng-disabled="userSettings.action == 'update'" name="password" ng-model="userSettings.user.password" ng-required="true">
+              <md-button ng-show="userSettings.action == 'save'" ng-click="userSettings.generatePassword()" md-no-ink class="md-primary">Gerar Password</md-button>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row" layout-xs="column" layout-align="center center" flex>
+            <textarea name="name" rows="3" cols="40"  flex="70" ng-model="userSettings.user.description" placeholder="Observações"></textarea>
+          </div>
+
+          <div layout-gt-sm="row" layout-xs="column" layout-align="center none" flex>
+            <md-button class="md-raised md-primary" ng-show="userSettings.action == 'save'" type="submit" ng-click="userSettings.save(userSettings.user)">Salvar</md-button>
+            <md-button class="md-raised md-primary" ng-show="userSettings.action == 'update'" type="submit" ng-click="userSettings.update(userSettings.user)">Atualizar Informações</md-button>
+            <md-button class="md-raised md-accent" ng-click="userSettings.cancel()">Cancelar</md-button>
+          </div>
+        </md-card-content>
+      </md-card>
+    </form>
+  </div>
+  <!-- Formulario fim -->
+</md-content>

@@ -1,0 +1,99 @@
+<md-card layout="column" flex>
+
+  <md-card-title flex="10">
+    <md-card-title-text flex>
+      <md-headline  layout="row" layout-align="center center">
+        <h1>{{ flashdataSettings.pageTitle }}</h1>
+      </md-headline>
+    </md-card-title-text>
+  </md-card-title>
+
+  <md-subheader class="md-primary" ng-hide="flashdataSettings.tableHide == true" layout="row" layout-align="start center" flex="10">
+    <md-button class="md-fab md-mini md-primary" ng-click="flashdataSettings.addFlashData()">
+      <md-icon ><i class="material-icons">add</i></md-icon>
+    </md-button>
+    <md-button class="md-fab md-mini md-primary" ng-click="flashdataSettings.searchFlashData()">
+      <md-icon ><i class="material-icons">search</i></md-icon>
+    </md-button>
+    <md-input-container ng-hide="flashdataSettings.tableParams.displaySearchBar == false">
+      <label>procura</label>
+      <input ng-model="flashdataSettings.tableParams.searchField">
+    </md-input-container>
+  </md-subheader>
+
+  <md-card-content layout="column" layout-align="space-around none" flex>
+    <md-content ng-hide="flashdataSettings.tableHide ==  false" flex>
+      <form name="overlaysForm" layout="column">
+        <div layout="row" layout-align="center center" flex>
+          <h2>{{flashdataSettings.formTitle}}</h2>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>Nome</label>
+            <input type="text" name="nome" ng-model="flashdataSettings.flashDataEdit.name">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>observação</label>
+            <input type="text" name="nome" ng-model="flashdataSettings.flashDataEdit.obs">
+          </md-input-container>
+        </div>
+      </form>
+      <div layout-gt-sm="row" layout-xs="column" layout-align="center none" flex>
+        <md-button class="md-raised md-primary" type="submit" ng-click="flashdataSettings.save(flashdataSettings.flashDataEdit)">Salvar</md-button>
+        <md-button class="md-raised md-accent" ng-click="flashdataSettings.cancel()">Cancelar</md-button>
+      </div>
+    </md-content>
+
+    <md-content ng-hide="flashdataSettings.tableHide == true" layout="column" flex>
+      <h2>Table</h2>
+      <md-table-container flex>
+        <table md-table>
+          <thead md-head md-order="flashDataOrderCriter">
+            <tr md-row>
+              <th md-column>#</th>
+              <th md-column md-order-by="name">NOME</th>
+              <th md-column>OBSERVAÇÃO</th>
+              <th md-column>AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="flash in flashdataSettings.flashDataArray
+            | toArray
+            | orderBy: flashDataOrderCriter
+            | filter: flashdataSettings.tableParams.searchField
+            | limitTo: flashdataSettings.tablePArams.rowsLim: (flashdataSettings.tablePArams.currentPage - 1)* flashdataSettings.tablePArams.rowsLim">
+            <td md-cell>{{ ((flashdataSettings.tableParams.currentPage - 1) * flashdataSettings.tableParams.rowsLim) + $index + 1 }}</td>
+            <td md-cell>{{flash.name}}</td>
+            <td md-cell>{{flash.obs}}</td>
+            <td md-cell>
+              <md-button
+              class="md-icon-button"
+              ng-click="flashdataSettings.loadFormThisFlashData(flash)">
+              <i class="material-icons">mode_edit</i>
+            </md-button>
+            <md-button
+            class="md-icon-button"
+            ng-click="flashdataSettings.deleteThisFlashData(flash)">
+            <i class="material-icons">delete</i>
+          </md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+</md-content>
+
+<md-table-pagination
+md-limit="flashdataSettings.tableParams.rowsLim"
+md-total="{{flashdataSettings.numFlashDatas() }}"
+md-limit-options="flashdataSettings.tableParams.limitOptions"
+md-page="flashdataSettings.tableParams.currentPage"
+md-label="{{flashdataSettings.tableParams.labelOptions}}"
+md-page-select="true"
+ng-hide="flashdataSettings.tableHide == true">
+</md-table-pagination>
+</md-card-content>
+
+</md-card>

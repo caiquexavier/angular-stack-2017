@@ -1,0 +1,234 @@
+[
+  {
+    "json": {
+      "ordem": 1100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 6,
+    "name": "Domic\u00edlios por Classe Econ\u00f4mica (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 7,
+    "name": "Postos de Combust\u00edveis"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 8,
+    "name": "Redes de Super/Hipermercados por Grupo"
+  },
+  {
+    "json": {
+      "ordem": 1500,
+      "obs": "IPC"
+    },
+    "id": 12,
+    "name": "\u00cdndice de Potencial de Consumo (%BR Estimativa 2016)"
+  },
+  {
+    "json": {
+      "ordem": 10,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 13,
+    "name": "Produto Interno Bruto (PIB)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 14,
+    "name": "Estimativa de Renda Domiciliar (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 15,
+    "name": "Chefe de Fam\u00edlia por Faixa Et\u00e1ria (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 17,
+    "name": "Popula\u00e7\u00e3o por Classe Econ\u00f4mica (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 18,
+    "name": "Domic\u00edlios por Tipo (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 19,
+    "name": "Domic\u00edlios Pr\u00f3prios ou Alugados (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 20,
+    "name": "Estimativa de Renda do Respons\u00e1vel (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1000,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 21,
+    "name": "Popula\u00e7\u00e3o Residente (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 22,
+    "name": "Popula\u00e7\u00e3o por Faixa Et\u00e1ria (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 23,
+    "name": "Chefe de Fam\u00edlia por Grau de Instru\u00e7\u00e3o (2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 24,
+    "name": "Popula\u00e7\u00e3o por Grau de Instru\u00e7\u00e3o(2016)"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 25,
+    "name": "\u00cdndice de Desenvolvimento Humano"
+  },
+  {
+    "json": {
+      "ordem": 1,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 26,
+    "name": "Munic\u00edpios por Porte de Popula\u00e7\u00e3o (2016)"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 31,
+    "name": "TecBan por Categoria"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 36,
+    "name": "ERBs por Operadora"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 37,
+    "name": "Canais de Venda por Operadora"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 38,
+    "name": "Dorel:  Faturamento Bruto"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 39,
+    "name": "Dorel:  Quantidade Vendida"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 40,
+    "name": "Dorel:  Receita L\u00edquida"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 41,
+    "name": "Frota de Ve\u00edculos"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 42,
+    "name": "Estabelecimentos por Porte de Funcion\u00e1rios"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 43,
+    "name": "Empregos por Porte de Empresa"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 44,
+    "name": "M\u00eddia :  Cobertura Globo"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 45,
+    "name": "Vivo :  Informa\u00e7\u00f5es Setores Censit\u00e1rio MG"
+  },
+  {
+    "json": {
+      "ordem": 100,
+      "obs": "Aqui vai um texto"
+    },
+    "id": 46,
+    "name": "Dorel:  Margem de Contribui\u00e7\u00e3o"
+  }
+]

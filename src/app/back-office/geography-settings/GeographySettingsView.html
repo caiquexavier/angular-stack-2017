@@ -1,0 +1,127 @@
+<md-card layout="column" flex>
+
+  <md-card-title flex="10">
+    <md-card-title-text flex>
+      <md-headline layout="row" layout-align="center center">
+        <span class="md-headline">{{ geographySettings.pageTitle }}</span>
+      </md-headline>
+    </md-card-title-text>
+  </md-card-title>
+
+  <md-card-content flex layout="column" layout-align="space-around none">
+
+    <!--start:new filter group form-->
+    <md-content ng-show="geographySettings.formParams.display" flex>
+      <form layout="column">
+
+        <div layout="row" layout-align="center center" flex>
+          <h3>criar/editar geografia</h3>
+        </div>
+
+        <!--XXX take a look later-->
+        <div layout="column">
+          <md-input-container>
+            <label>ref</label>
+            <input ng-model="geographySettings.formParams.geoObj.ref">
+          </md-input-container>
+          <md-input-container>
+            <label>geografia</label>
+            <input ng-model="geographySettings.formParams.geoObj.geo">
+          </md-input-container>
+          <md-input-container>
+            <label>label</label>
+            <input ng-model="geographySettings.formParams.geoObj.label">
+          </md-input-container>
+        </div>
+        <!--
+        <div>
+          {{ geographySettings.formParams }}
+        </div>
+        -->
+
+        <div layout="row" layout-align="center none" flex>
+          <md-button  ng-click="geographySettings.save(geographySettings.formParams)">Salvar</md-button>
+          <md-button  ng-click="geographySettings.cancel()">Cancelar</md-button>
+        </div>
+
+      </form>
+    </md-content>
+    <!--end:new filter group form-->
+
+    <!--start:search bar-->
+    <md-subheader layout="row" layout-align="start center" flex="10" ng-hide="geographySettings.formParams.display">
+
+      <md-button class="md-fab md-mini md-primary" ng-click="geographySettings.displayForm()">
+        <md-icon ><i class="material-icons">add</i></md-icon>
+      </md-button>
+      <md-button class="md-fab md-mini md-primary" ng-click="geographySettings.toggleSearchBar()">
+        <md-icon ><i class="material-icons">search</i></md-icon>
+      </md-button>
+
+      <md-input-container ng-show="geographySettings.tableParams.displaySearchBar">
+        <label>ref</label>
+        <input ng-model="geographySettings.tableParams.refSearch">
+      </md-input-container>
+      <md-input-container ng-show="geographySettings.tableParams.displaySearchBar">
+        <label>geografia</label>
+        <input ng-model="geographySettings.tableParams.geoSearch">
+      </md-input-container>
+
+    </md-subheader>
+    <!--end:search bar-->
+
+    <!--start:table content-->
+    <md-content layout="column" flex ng-hide="geographySettings.formParams.display">
+      <md-table-container flex>
+        <table md-table>
+          <thead md-head>
+            <tr md-row>
+              <th md-column>#</th>
+              <th md-column>REF</th>
+              <th md-column>GEOGRAFIA</th>
+              <th md-column>LABEL</th>
+              <th md-column>AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="geo in geographySettings.geographies
+            | toArray
+            | filter: {'ref': geographySettings.tableParams.refSearch, 'geo': geographySettings.tableParams.geoSearch}
+            | limitTo : geographySettings.tableParams.rowsLim : (geographySettings.tableParams.currentPage - 1) * geographySettings.tableParams.rowsLim">
+              <td md-cell>{{ ((geographySettings.tableParams.currentPage - 1) * geographySettings.tableParams.rowsLim) + $index + 1 }}</td>
+              <td md-cell>{{ geo.ref }}</td>
+              <td md-cell>{{ geo.geo }}</td>
+              <td md-cell>{{ geo.label }}</td>
+              <td md-cell>
+                <md-button
+                  class="md-icon-button"
+                  ng-click="geographySettings.loadFormParams(geo)">
+                  <i class="material-icons">mode_edit</i>
+                </md-button>
+                <md-button 
+                  class="md-icon-button"
+                  ng-click="geographySettings.deleteGeography(geo)">
+                  <i class="material-icons">delete</i>
+                </md-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </md-content>
+    <!--end:table content-->
+
+    <!--start:table pagination bar-->
+    <md-table-pagination 
+      md-limit="geographySettings.tableParams.rowsLim" 
+      md-total="{{ geographySettings.numGeographies() }}"
+      md-limit-options="geographySettings.tableParams.limitOptions" 
+      md-page="geographySettings.tableParams.currentPage" 
+      md-label="{{ geographySettings.tableParams.labelOptions }}" 
+      md-page-select="true"
+      ng-hide="geographySettings.formParams.display">
+    </md-table-pagination>
+    <!--end:table pagination bar-->
+
+  </md-card-content>
+</md-card>

@@ -1,0 +1,115 @@
+<md-card layout="column" flex>
+
+  <md-card-title flex="10">
+    <md-card-title-text flex>
+      <md-headline  layout="row" layout-align="center center">
+        <h1>{{ overlaySettings.pageTitle }}</h1>
+      </md-headline>
+    </md-card-title-text>
+  </md-card-title>
+
+  <md-subheader class="md-primary" ng-hide="overlaySettings.tableHide == true" layout="row" layout-align="start center" flex="10">
+    <md-button class="md-fab md-mini md-primary" ng-click="overlaySettings.addOverlay()">
+      <md-icon ><i class="material-icons">add</i></md-icon>
+    </md-button>
+    <md-button class="md-fab md-mini md-primary" ng-click="overlaySettings.searchOverlay()">
+      <md-icon ><i class="material-icons">search</i></md-icon>
+    </md-button>
+    <md-input-container ng-hide="overlaySettings.tableParams.displaySearchBar == false">
+      <label>procura</label>
+      <input ng-model="overlaySettings.tableParams.searchField">
+    </md-input-container>
+  </md-subheader>
+
+  <md-card-content layout="column" layout-align="space-around none" flex>
+    <md-content ng-hide="overlaySettings.tableHide ==  false" flex>
+      <form name="overlaysForm" layout="column">
+        <div layout="row" layout-align="center center" flex>
+          <h2>{{overlaySettings.formTitle}}</h2>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>Nome</label>
+            <input type="text" name="nome" ng-model="overlaySettings.overlayObject.name">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>Dataset</label>
+            <input type="text" name="nome" ng-model="overlaySettings.overlayObject.dataset">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>Ordem Overlay</label>
+            <input type="number" name="nome" ng-model="overlaySettings.overlayObject.order">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" layout-xs="column" flex>
+          <md-input-container flex>
+            <label>observação</label>
+            <input type="text" name="nome" ng-model="overlaySettings.overlayObject.obs">
+          </md-input-container>
+        </div>
+      </form>
+      <div layout-gt-sm="row" layout-xs="column" layout-align="center none" flex>
+        <md-button class="md-raised md-primary" type="submit" ng-click="overlaySettings.save(overlaySettings.overlayObject)">Salvar</md-button>
+        <md-button class="md-raised md-accent" ng-click="overlaySettings.cancel()">Cancelar</md-button>
+      </div>
+    </md-content>
+
+    <md-content ng-hide="overlaySettings.tableHide == true" layout="column" flex>
+      <h2>Table</h2>
+      <md-table-container flex>
+        <table md-table>
+          <thead md-head md-order="overlayOrderCriter">
+            <tr md-row>
+              <th md-column>#</th>
+              <th md-column md-order-by="name">NOME</th>
+              <th md-column md-order-by="dataset">DATASET</th>
+              <th md-column>ORDEM OVERLAY</th>
+              <th md-column>OBSERVAÇÃO</th>
+              <th md-column>AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="overlay in overlaySettings.overlays
+            | toArray
+            | orderBy: overlayOrderCriter
+            | filter: overlaySettings.tableParams.searchField
+            | limitTo: overlaySettings.tablePArams.rowsLim: (overlaySettings.tablePArams.currentPage - 1)* overlaySettings.tablePArams.rowsLim">
+            <td md-cell>{{ ((overlaySettings.tableParams.currentPage - 1) * overlaySettings.tableParams.rowsLim) + $index + 1 }}</td>
+            <td md-cell>{{overlay.name}}</td>
+            <td md-cell>{{overlay.dataset}}</td>
+            <td md-cell>{{overlay.order}}</td>
+            <td md-cell>{{overlay.obs}}</td>
+            <td md-cell>
+              <md-button
+              class="md-icon-button"
+              ng-click="overlaySettings.loadFormThisOverlay(overlay)">
+              <i class="material-icons">mode_edit</i>
+            </md-button>
+            <md-button
+            class="md-icon-button"
+            ng-click="overlaySettings.deleteThisOverlay(overlay)">
+            <i class="material-icons">delete</i>
+          </md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+</md-content>
+
+<md-table-pagination
+md-limit="overlaySettings.tableParams.rowsLim"
+md-total="{{overlaySettings.numOverlays() }}"
+md-limit-options="overlaySettings.tableParams.limitOptions"
+md-page="overlaySettings.tableParams.currentPage"
+md-label="{{overlaySettings.tableParams.labelOptions}}"
+md-page-select="true"
+ng-hide="overlaySettings.tableHide == true">
+</md-table-pagination>
+</md-card-content>
+
+</md-card>

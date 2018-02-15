@@ -1,0 +1,744 @@
+[
+    {
+        "id": 14,
+        "json": {
+            "interactivity": [
+                "testando",
+                "novo"
+            ],
+            "name": "Flashdata Funcional",
+            "obs": "Adicionando format",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "variavel": "*"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "municipio"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "testando",
+                            "format": {
+                                "precision": "2",
+                                "type": "round"
+                            },
+                            "variavel": "domclasse_a1"
+                        },
+                        {
+                            "alias": "novo",
+                            "format": {
+                                "precision": "2",
+                                "type": "round"
+                            },
+                            "variavel": "domclasse_a2"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "domicilio_muni"
+                }
+            },
+            "target": "muniXXX"
+        },
+        "name": "Flashdata Funcional"
+    },
+    {
+        "id": 15,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo MUNI",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "municipio"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_muni"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_muni"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_muni"
+                }
+            },
+            "target": "muni"
+        },
+        "name": "Sociodemo MUNI"
+    },
+    {
+        "id": 16,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo UF",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "estado"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_muni"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_muni"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_muni"
+                }
+            },
+            "target": "uf"
+        },
+        "name": "Sociodemo UF"
+    },
+    {
+        "id": 17,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo MICRO",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "microrregiao"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_micro"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_micro"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_micro"
+                }
+            },
+            "target": "micro"
+        },
+        "name": "Sociodemo MICRO"
+    },
+    {
+        "id": 18,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo MESO",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "mesorregiao"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_meso"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_meso"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_meso"
+                }
+            },
+            "target": "meso"
+        },
+        "name": "Sociodemo MESO"
+    },
+    {
+        "id": 19,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo DIST",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "distrito"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_dist"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_dist"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_dist"
+                }
+            },
+            "target": "dist"
+        },
+        "name": "Sociodemo DIST"
+    },
+    {
+        "id": 20,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo AGLO",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "aglomerado"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_aglo"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_aglo"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_aglo"
+                }
+            },
+            "target": "aglo"
+        },
+        "name": "Sociodemo AGLO"
+    },
+    {
+        "id": 21,
+        "json": {
+            "interactivity": [
+                "descri\u00e7\u00e3o",
+                "popula\u00e7\u00e3o",
+                "domic\u00edlio",
+                "renda m\u00e9dia (sm)",
+                "ipc (% brasil)"
+            ],
+            "name": "Sociodemo SCEN",
+            "obs": "Flash ALE",
+            "params": {
+                "a": {
+                    "column": [
+                        {
+                            "alias": "cartodb_id",
+                            "variavel": "cartodb_id"
+                        },
+                        {
+                            "alias": "the_geom",
+                            "variavel": "the_geom"
+                        },
+                        {
+                            "alias": "the_geom_webmercator",
+                            "variavel": "the_geom_webmercator"
+                        },
+                        {
+                            "alias": "descri\u00e7\u00e3o",
+                            "variavel": "descricao"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "setor_censitario"
+                },
+                "b": {
+                    "column": [
+                        {
+                            "alias": "popula\u00e7\u00e3o",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "pop"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "censo2010pessoas1_estimativa_scen"
+                },
+                "c": {
+                    "column": [
+                        {
+                            "alias": "domic\u00edlio",
+                            "format": {
+                                "precision": "0",
+                                "type": "round"
+                            },
+                            "variavel": "domtot"
+                        },
+                        {
+                            "alias": "renda m\u00e9dia (sm)",
+                            "format": {
+                                "precision": "1",
+                                "type": "round"
+                            },
+                            "variavel": "dom_renda_media"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "bracec2010dom_posse_estimativa_scen"
+                },
+                "d": {
+                    "column": [
+                        {
+                            "alias": "ipc (% brasil)",
+                            "format": {
+                                "precision": "3",
+                                "type": "round"
+                            },
+                            "variavel": "p_brasil"
+                        }
+                    ],
+                    "ref": "recid",
+                    "table": "braipcgmcat_estimativa_scen"
+                }
+            },
+            "target": "scen"
+        },
+        "name": "Sociodemo SCEN"
+    },
+    {
+        "id": 22,
+        "json": {
+            "interactivity": [
+                "editado",
+                "populacao",
+                "pop_hom",
+                "pop_mul",
+                "domclasse_a1",
+                "domclasse_a2",
+                "domclasse_b1",
+                "domclasse_b2",
+                "domclasse_c1",
+                "domclasse_c2",
+                "domclasse_d",
+                "domclasse_e",
+                "domtot",
+                "dom_renda_media"
+            ],
+            "name": "Municipio",
+            "obs": "Observa\u00e7\u00e3o",
+            "params": {
+                "a": {
+                    "column": [
+                        "*"
+                    ],
+                    "ref": "recid",
+                    "table": "municipio"
+                },
+                "b": {
+                    "column": [
+                        "domclasse_a1",
+                        "domclasse_a2",
+                        "domclasse_b1",
+                        "domclasse_b2",
+                        "domclasse_c1",
+                        "domclasse_c2",
+                        "domclasse_d",
+                        "domclasse_e",
+                        "domtot",
+                        "dom_renda_media"
+                    ],
+                    "ref": "recid",
+                    "table": "domicilio_muni"
+                },
+                "c": {
+                    "column": [
+                        "pop as populacao",
+                        "pop_hom",
+                        "pop_mul"
+                    ],
+                    "ref": "recid",
+                    "table": "populacao_muni"
+                },
+                "d": {
+                    "column": [
+                        "nome as editado"
+                    ],
+                    "ref": "recid",
+                    "table": "spareamuni"
+                }
+            },
+            "target": "muniXXX"
+        },
+        "name": "Municipio"
+    }
+]

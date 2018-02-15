@@ -1,0 +1,23 @@
+{
+  "object" : {
+    "sim" : {
+      "admin" : {
+        "users" : {
+          "GcFXAp3GylVUW6jqI0CH7bNAxUh1" : {
+            "accessLevel" : "admin",
+            "name" : "Caique"
+          },
+          "Gs09YkwbUObPeKiAADPSmykWIvt2" : {
+            "accessLevel" : "admin",
+            "name" : "Mateus"
+          },
+          "wGrDFekvTNON2uLgUdtXvlQHdn13" : {
+            "accessLevel" : "admin",
+            "name" : "Nicolas"
+          }
+        }
+      },
+      "app" : "app"
+    }
+  }
+}

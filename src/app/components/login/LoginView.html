@@ -1,0 +1,36 @@
+<md-content class="loginFullHeight" layout-xs="column" layout="row" layout-align="center">
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <md-progress-linear ng-show="login.isLoading == true" md-mode="indeterminate"></md-progress-linear>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ login.title }}</span>
+          <span class="md-subhead">Insira seu usuário e senha</span>
+        </md-card-title-text>
+      </md-card-title>
+      <form name="loginForm" validate>
+        <md-card-content>
+          <md-input-container>
+            <label>Email</label>
+            <input type="email" name="email" ng-model="login.user" required>
+            <div ng-messages="loginForm.email.$error">
+              <div ng-message="required">Email inválido</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="login.password" required>
+            <div ng-messages="loginForm.email.$error">
+              <div ng-message="required">Senha inválida</div>
+            </div>
+          </md-input-container>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button type="submit" ng-click="login.save(login)" class="md-fab md-accent" aria-label="login">
+            <md-icon><i class="material-icons">arrow_forward</i></md-icon>
+          </md-button>
+        </md-card-actions>
+      </form>
+    </md-card>
+  </div>
+</md-content>

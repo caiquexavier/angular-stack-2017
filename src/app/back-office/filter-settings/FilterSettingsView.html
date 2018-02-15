@@ -1,0 +1,131 @@
+<md-card layout="column" flex>
+
+  <md-card-title flex="10">
+    <md-card-title-text flex>
+      <md-headline layout="row" layout-align="center center">
+        <span class="md-headline">{{ filterSettings.pageTitle }}</span>
+      </md-headline>
+    </md-card-title-text>
+  </md-card-title>
+
+  <md-card-content flex layout="column" layout-align="space-around none">
+
+    <!--start:new filter group form-->
+    <md-content ng-show="filterSettings.formParams.display" flex>
+      <form layout="column">
+        <div layout="row" layout-align="center center" flex>
+          <h3>criar/editar filtro</h3>
+        </div>
+
+        <!--definição de nome-->
+        <div layout="row" flex>
+          <md-input-container flex="50">
+            <label>Nome (defina um nome para o filtro)</label>
+            <input required>
+          </md-input-container>
+        </div>
+
+        <div layout="row" flex>
+
+          <div flex>
+            <!--seleção de geografias-->
+            <md-subheader class="md-no-sticky">busca de geografias por referência</md-subheader>
+            <md-input-container>
+              <label>digite e pressione "enter"</label>
+              <input 
+              ng-model="filterSettings.formParams.geoRefSearch" 
+              ng-change="filterSettings.updateGeolistDisplayCondition(matchedGeos)" 
+              ng-keypress="filterSettings.pushGeography($event.keyCode, matchedGeos)">
+            </md-input-container>
+            
+            <md-list ng-show="filterSettings.formParams.displayGeoList">
+              <md-list-item 
+                class="md-2-line" 
+                ng-repeat="geography in filterSettings.formParams.geographies | toArray | filter: {'ref': filterSettings.formParams.geoRefSearch} as matchedGeos" 
+                ng-click="filterSettings.toggleGeography(geography)">
+                <div class="md-list-item-text" layout="column">
+                  <h4>{{ geography.ref }}</h4>
+                  <h3>{{ geography.label }}</h3>
+                </div>
+              </md-list-item>
+            </md-list>
+          </div>
+
+          <div flex>
+            <md-subheader class="md-no-sticky">geografias selecionadas</md-subheader>
+            <md-list flex>
+              <md-list-item 
+                class="md-2-line"
+                ng-repeat="geography in filterSettings.formParams.selectedGeos"
+                ng-click="filterSettings.toggleGeography(geography)">
+                <div class="md-list-item-text" layout="column">
+                  <h4>{{ geography.ref }}</h4>
+                  <h3>{{ geography.label }}</h3>
+                </div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+
+        <div layout="row" layout-align="center none" flex>
+          <md-button  ng-click="filterSettings.save()">Salvar</md-button>
+          <md-button  ng-click="filterSettings.cancel()">Cancelar</md-button>
+        </div>
+      </form>
+    </md-content>
+    <!--end:new filter group form-->
+
+    <!--start:search bar-->
+    <md-subheader layout="row" layout-align="start center" flex="10" ng-hide="filterSettings.formParams.display">
+      <md-button class="md-fab md-mini md-primary" ng-click="filterSettings.toggleFilterForm()">
+        <md-icon ><i class="material-icons">add</i></md-icon>
+      </md-button>
+      <md-button class="md-fab md-mini md-primary" ng-click="filterSettings.toggleSearchBar()">
+        <md-icon ><i class="material-icons">search</i></md-icon>
+      </md-button>
+      <md-input-container flex="5" ng-show="filterSettings.tableParams.displaySearchBar">
+        <label>id</label>
+        <input ng-model="filterSettings.tableParams.idSearch">
+      </md-input-container>
+      <md-input-container ng-show="filterSettings.tableParams.displaySearchBar">
+        <label>nome</label>
+        <input ng-model="filterSettings.tableParams.nameSearch">
+      </md-input-container>
+    </md-subheader>
+    <!--end:search bar-->
+
+    <!--start:table content-->
+    <md-content layout="column" flex ng-hide="filterSettings.formParams.display">
+      <md-table-container flex>
+        <table md-table>
+          <thead md-head>
+            <tr md-row>
+              <th md-column>#</th>
+              <th md-column>ID</th>
+              <th md-column>NOME</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="filter in filterSettings.filterGroupsArray | filter : {'id': filterSettings.tableParams.idSearch, 'name': filterSettings.tableParams.nameSearch} | limitTo: filterSettings.tableParams.rowsLim : (filterSettings.tableParams.currentPage - 1) * filterSettings.tableParams.rowsLim">
+              <td md-cell>{{ ((filterSettings.tableParams.currentPage - 1) * filterSettings.tableParams.rowsLim) + $index + 1}}</td>
+              <td md-cell>{{ filter.id }}</td>
+              <td md-cell>{{ filter.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </md-content>
+    <!--end:table content-->
+
+    <md-table-pagination 
+      md-limit="filterSettings.tableParams.rowsLim" 
+      md-total="{{ filterSettings.filterGroupsArray.length }}" 
+      md-limit-options="filterSettings.tableParams.limitOptions" 
+      md-page="filterSettings.tableParams.currentPage" 
+      md-label="{{ filterSettings.tableParams.labelOptions }}" 
+      md-page-select="true"
+      ng-hide="filterSettings.formParams.display">
+    </md-table-pagination>
+
+  </md-card-content>
+</md-card>

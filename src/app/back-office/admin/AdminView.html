@@ -1,0 +1,57 @@
+<div class="contentFullHeigthWidth" layout="row" ng-cloak>
+
+  <md-sidenav id="theNav"
+  ng-hide="admin.navState == false"
+  class="md-sidenav-left "
+  md-component-id="left"
+  md-is-locked-open="$mdMedia('gt-sm')"
+  md-whiteframe="4" layout="column" flex="12">
+
+  <md-toolbar  class="md-primary md-hue-2" layout="row" >
+    <h1 class="md-toolbar-tools" flex-gt-sm="100" flex="70">Geografia de Mercado</h1>
+    <md-button ng-click="admin.closeNav()" class="md-raised md-primary" hide-gt-sm flex>
+      <md-icon><i class="material-icons">close</i></md-icon>
+    </md-button>
+  </md-toolbar>
+
+  <md-content  class="navContentWidth " md-colors="{backgroundColor: 'primary'}" layout="column" flex>
+    <md-list layout="column" flex="70">
+      <md-list-item ng-repeat="navItem in admin.sidebarNavigation.items" ui-sref-active="navItemActive" layout="row" flex>
+        <div class="md-list-item-text" layout="row" layout-align="center center" flex>
+          <a class="navLinkItem" ui-sref="{{navItem.url}}" layout="row" layout-align="space-around center" flex>
+            <button class="navBtnActivate" layout="row" flex>
+
+              <h3 class="navNameItem"  flex="80">{{navItem.title}}</h3>
+              <md-icon class="navIconItem"  flex><i class="material-icons">{{navItem.img}}</i></md-icon>
+
+            </button>
+          </a>
+        </div>
+      </md-list-item>
+    </md-list>
+    <div flex="15"></div>
+    <div class="md-list-item-text" layout="row" layout-align="start center" flex>
+      <md-button class="md-fab"  ng-click="admin.quit()" layout="row" layout-align="space-around center" flex="20">
+        <md-icon ><i class="material-icons">power_settings_new</i></md-icon>
+      </md-button>
+    </div>
+
+  </md-content>
+
+</md-sidenav>
+
+<div  layout="column" flex>
+  <md-toolbar class="md-primary md-hue-2" layout="row">
+    <div class="md-toolbar-tools" layout="row" flex>
+      <md-button ng-click="admin.openNav()" class="md-raised md-primary"  hide-gt-sm flex="10">
+        <md-icon><i class="material-icons">menu</i></md-icon>
+      </md-button>
+      <md-button ng-click="admin.invertStateNav()" class="md-raised md-primary" hide show-gt-sm flex="10">
+        <md-icon ng-hide="admin.navState == false"><i class="material-icons">arrow_back</i></md-icon>
+        <md-icon ng-hide="admin.navState == true"><i class="material-icons">arrow_forward</i></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div layout="row" flex class="contentFullHeigthWidth" ui-view></div>
+</div>
+</div>
